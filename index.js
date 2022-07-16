@@ -11,15 +11,15 @@ function playRound(playerSelection, computerSelection){
     let message = '';
     if (playerSelection.toLowerCase()== "rock" && computerSelection == "scissors" || playerSelection.toLowerCase() == "paper" && computerSelection == "rock" || playerSelection.toLowerCase() == "scissors" && computerSelection == "paper"){
         
-       message = `You win!, ${playerSelection} beats ${computerSelection}`
+       message = `Computer played ${computerSelection} \nYou played ${playerSelection} \nYou win!, ${playerSelection} beats ${computerSelection}`
      }
      else if (playerSelection.toLowerCase()=="rock" && computerSelection =="paper" || playerSelection.toLowerCase()== "scissors" && computerSelection =="rock" || playerSelection.toLowerCase()=="paper" && computerSelection =="scissors"){
        
-       message = `You lose!, ${computerSelection} beats ${playerSelection}`
+       message = `Computer played ${computerSelection} \nYou played ${playerSelection} \nYou lose!, ${computerSelection} beats ${playerSelection}`
      }
      else if (playerSelection.toLowerCase() == computerSelection){
       
-       message = `It's a tie! ${playerSelection} is equal to ${computerSelection}`
+       message = `Computer played ${computerSelection} \nYou played ${playerSelection} \nIt's a tie! ${playerSelection} is equal to ${computerSelection}`
      } 
     
     return message;
