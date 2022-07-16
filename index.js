@@ -28,12 +28,7 @@ function playRound(playerSelection, computerSelection){
 function game(){
   for(let i = 0; i < 5; i++){
       let input = prompt('Please enter your selection...');
-      if(input.toLowerCase == 'rock' || input.toLowerCase == 'paper' || input.toLowerCase == 'scissors'){
-        console.log(playRound(input, result));
-    }
-    else{
-        console.log('You entered the wrong value');
-    }
+      console.log(playRound(input, computerPlay()));
   }
 }
 console.log(game());
