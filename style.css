@@ -1,0 +1,43 @@
+body {
+    text-align: center;
+  }
+
+  .container {
+    margin: 0 auto;
+    background-color: #64278f;
+    border-radius: 20px;
+    padding: 25px 50px;
+    width: 80vw;
+  }
+
+  h1,h2 {
+    color: white;
+  }
+
+
+  .display-box {
+    width: 50%;
+    height: 50%;
+  }
+
+  .action {
+    max-width: 800px;
+    padding: 40px 0;
+    margin: 0 auto;
+    background-color: #ffffff;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 20px;
+  }
+
+  .options {
+    border-radius: 100%;
+    border-width: 4px;
+    border-style: solid;
+    border-color: #64278f;
+    padding: 10px;
+    width: 100%;
+    max-width: 120px;
+  }

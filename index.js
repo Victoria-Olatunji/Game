@@ -1,46 +1,79 @@
-function computerPlay() {
-    const array = ['rock', 'paper', 'scissors'];
-    const randomIndex = Math.floor(Math.random() * array.length);
-    const item = array[randomIndex];
-    return item;
-}
+const options = document.querySelectorAll(".options");
+let pScore = 0;
+let cScore = 0;
 
-// const result = computerPlay();
+options.forEach((option) => {
+  option.addEventListener("click", function () {
+    const pSelection = this.textContent;
 
-function playRound(playerSelection, computerSelection){
-    let message = '';
-    if (playerSelection.toLowerCase()== "rock" && computerSelection == "scissors" || playerSelection.toLowerCase() == "paper" && computerSelection == "rock" || playerSelection.toLowerCase() == "scissors" && computerSelection == "paper"){
-        
-       message = `Computer played ${computerSelection} \nYou played ${playerSelection} \nYou win!, ${playerSelection} beats ${computerSelection}`
-     }
-     else if (playerSelection.toLowerCase()=="rock" && computerSelection =="paper" || playerSelection.toLowerCase()== "scissors" && computerSelection =="rock" || playerSelection.toLowerCase()=="paper" && computerSelection =="scissors"){
-       
-       message = `Computer played ${computerSelection} \nYou played ${playerSelection} \nYou lose!, ${computerSelection} beats ${playerSelection}`
-     }
-     else if (playerSelection.toLowerCase() == computerSelection){
-      
-       message = `Computer played ${computerSelection} \nYou played ${playerSelection} \nIt's a tie! ${playerSelection} is equal to ${computerSelection}`
-     } 
+    const cOptions = ["Rock", "Paper", "Scissors"];
+    const cSelection = cOptions[Math.floor(Math.random() * 3)];
+
+    playRound(pSelection, cSelection);
+    updateScore();
+    if (checkWinner()) {
+      pScore = cScore = 0;
+      updateScore();
+    }
+  });
+});
+
+function playRound(pSelection, cSelection){
+  const currentMatch = `${pSelection} computer selected: ${cSelection}`;
+  if (pSelection === cSelection) {
     
-    return message;
-}
-
-function game(){
-  for(let i = 0; i < 5; i++){
-    let input = prompt('Please enter selection...'); 
-      input = input.toLowerCase();
-      if( input === 'rock' || input === 'paper' || input === 'scissors'){
-        console.log(`Round ${i+1} \n${playRound(input, computerPlay())}`);
-      }else{
-       console.log('Invalid selection,choose only rock paper scissors');
-       i--;
+    showResult(`${currentMatch} is a Tie`);
+    return;
+  }
+  if (pSelection === "Rock") {
+    if (cSelection === "Scissors") {
+      showResult(`${currentMatch} = You win`);
+    pScore++;
+      } else {
+        showResult(`${currentMatch} = Computer Wins`);
+        cScore++;
       }
     }
-    return '';
+    else if (pSelection === "Paper") {
+      if (cSelection === "Rock") {
+          showResult(`${currentMatch} = You win`)
+        pScore++;
+      } else {
+        showResult(`${currentMatch} = Computer Wins`)
+        cScore++;
+      }
+    }
+    else {
+      if (cSelection === "Paper") {
+        
+        showResult(`${currentMatch} = You win`)
+        pScore++;
+      } else {
+              showResult(`${currentMatch} = Computer Wins`)
+        cScore++;
+      }
+    }
+}
+
+function updateScore() {
+  document.getElementById("p-score").textContent = pScore;
+  document.getElementById("c-score").textContent = cScore;
+}
+
+function checkWinner() {
+  if ((pScore + cScore) === 5) {
+    const winner =
+      pScore > cScore
+        ? showResult("You win the game! Congratulations!")
+        : showResult("Computer wins the game! Try again next time!");
+    
+    return true;
   }
-console.log(game());
+  return false;
+}
 
-
-
-
-
+const showResult = (text)=>{
+  const para = document.createElement("p");
+  para.innerHTML = text;
+  document.querySelector(".ans").appendChild(para);
+}
