@@ -19,7 +19,7 @@ options.forEach((option) => {
 });
 
 function playRound(pSelection, cSelection){
-  const currentMatch = `${pSelection} computer selected: ${cSelection}`;
+  const currentMatch = `${pSelection} Computer selected: ${cSelection}`;
   if (pSelection === cSelection) {
     
     showResult(`${currentMatch} is a Tie`);
